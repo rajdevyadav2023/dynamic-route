@@ -1,9 +1,19 @@
 import React from 'react'
-
+import data from '../data.json'
+import { Link, Outlet } from 'react-router-dom'
 const Users = () => {
+    
   return (
     <div>
-      <h1>this is user component</h1>
+      {
+        data.map((user)=>{
+            return(
+                <Link to={`/users/${user.id}`} key={user.id}><h4>{user.firstName + user.lastName }</h4></Link>
+            )
+        })
+      }
+
+      <Outlet/>
     </div>
   )
 }

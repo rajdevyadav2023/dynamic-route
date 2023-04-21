@@ -1,11 +1,30 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import data from '../data.json';
+
+
 
 const UserDetails = () => {
-    const {userId} = useParams()
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
+let currentUser = {};
+data.forEach((user)=>{
+  if(user.id == userId){
+currentUser = user;
+  }
+})
   return (
     <div>
-      <h1>user UserDetails page {userId}</h1>
+      <div className="user-details">
+        <h1> {currentUser.firstName} {currentUser.lastName}</h1>
+        <h3>Age : {currentUser.age}</h3>
+        <h3>DOB : {currentUser.dob}</h3>
+        <h3>Phone : {currentUser.contactNumber} </h3>
+      </div>
+     
+
+      <button onClick={() => navigate(-1)} className='bk-btn'>Go Back</button>
     </div>
   )
 }

@@ -1,19 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Users from './components/Users';
 import UserDetails from './components/UserDetails';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <h1>Jai Shree Ganesh</h1>
-      <h1>Jai Shree Ganesh</h1>
+   
+     
+     <Routes>
+      <Route index element={<Home/>}/>
+        <Route path='/users' element={<Home/>}/>
+       
+          <Route path='/users/:userId' element={<UserDetails/>} />
+     </Routes>
 
-      <Routes>
-        <Route path='users' element={<Users/>}>
-          <Route path=':userId' element={<UserDetails/>} />
-        </Route>
-      </Routes>
+    
     </div>
   );
 }
